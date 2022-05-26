@@ -6,7 +6,7 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>Zurvival</title>
-        <meta name="description" content="RPG videogame made with nextjs" />
+        <meta name="description" content="A survival RPG made with nextjs." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
