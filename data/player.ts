@@ -1,3 +1,4 @@
+import Character, { CharacterArgs } from "./character";
 // Definitions
 
 export enum PlayerProfessions {
@@ -5,7 +6,7 @@ export enum PlayerProfessions {
   Engineer,
   Doctor,
   Carpenter,
-  Police
+  Police,
 }
 
 export enum PlayerConditions {
@@ -13,7 +14,7 @@ export enum PlayerConditions {
   Hungry,
   Thirsty,
   Bleeding,
-  Horny
+  Horny,
 }
 
 export interface PlayerStats {
@@ -22,39 +23,29 @@ export interface PlayerStats {
   luck: number;
 }
 
-export interface PlayerArgs {
-  name: string;
+export interface PlayerArgs extends CharacterArgs {
   profession: PlayerProfessions;
   stats: PlayerStats;
 }
 
 // Model
 
-class Player {
-  name: string;
-  currentLifePoints: number;
-  maxLifePoints: number;
+class Player extends Character {
   conditions!: PlayerConditions[];
   profession: PlayerProfessions;
+  nextLevelExperience: number;
+  currentExperience;
+  stats: PlayerStats;
   thirst: number;
   hunger: number;
-  level: number;
-  currentExperience: number;
-  nextLevelExperience: number;
-  stats: PlayerStats;
-
   constructor(args: PlayerArgs) {
-    this.name = args.name;
+    super(args);
     this.profession = args.profession;
-    this.currentLifePoints = 100;
-    this.maxLifePoints = 100;
-    this.conditions = [];
-    this.thirst = 100;
-    this.hunger = 100;
-    this.level = 1;
+    this.stats = args.stats;
     this.currentExperience = 0;
     this.nextLevelExperience = this.level * 100;
-    this.stats = args.stats;
+    this.thirst = 100;
+    this.hunger = 100;
   }
 }
 

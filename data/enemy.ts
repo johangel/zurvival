@@ -1,3 +1,4 @@
+import Character, { CharacterArgs } from "./character";
 export enum EnemyConditions {
   Bleeding,
   Poison,
@@ -9,17 +10,16 @@ export enum AttackType {
   Fire,
   Frost,
   Poison,
-  Bleed
+  Bleed,
 }
 
 // TODO: Define better
 export enum EnemyType {
   Shadow,
-  Fairy
+  Fairy,
 }
 
-export interface EnemyArgs {
-  name: string;
+export interface EnemyArgs extends CharacterArgs {
   type: EnemyType;
   attackType: AttackType;
   resistence: AttackType[];
@@ -28,21 +28,16 @@ export interface EnemyArgs {
   maxLifePoints: number;
 }
 
-class Enemy {
-  name: string;
+class Enemy extends Character {
   type: EnemyType;
-  currentLifePoints: number;
-  maxLifePoints: number;
   conditions!: EnemyConditions[];
   attackDamage: number;
   attackType: AttackType;
   resistence: AttackType[];
-  level: number;
+
   constructor(args: EnemyArgs) {
-    this.name = args.name;
+    super(args);
     this.type = args.type;
-    this.currentLifePoints = 100;
-    this.maxLifePoints = args.maxLifePoints;
     this.conditions = [];
     this.attackDamage = args.attackDamage;
     this.attackType = args.attackType;
@@ -51,4 +46,4 @@ class Enemy {
   }
 }
 
-export default Enemy
+export default Enemy;
