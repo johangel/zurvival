@@ -17,7 +17,7 @@ export enum EnemyType {
   shadow,
   fairy
 }
-
+//TODO: Define
 export interface EnemyArgs{
   name: string;
   type: EnemyType;
