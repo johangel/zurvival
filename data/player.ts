@@ -1,3 +1,5 @@
+// Definitions
+
 export enum PlayerProfessions {
   Civilian,
   Engineer,
@@ -25,6 +27,8 @@ export interface PlayerArgs {
   profession: PlayerProfessions;
   stats: PlayerStats;
 }
+
+// Model
 
 class Player {
   name: string;
